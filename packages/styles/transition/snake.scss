@@ -1,0 +1,48 @@
+@keyframes x-snake {
+  0% {
+    top: 0;
+    left: 0;
+    width: 20%;
+    height: 20%;
+  }
+  12.5% {
+    width: 40%;
+    height: 20%;
+  }
+  25% {
+    top: 0;
+    left: 80%;
+    width: 20%;
+    height: 20%;
+  }
+  37.5% {
+    width: 20%;
+    height: 40%;
+  }
+  50% {
+    top: 80%;
+    left: 80%;
+    width: 20%;
+    height: 20%;
+  }
+  62.5% {
+    width: 40%;
+    height: 20%;
+  }
+  75% {
+    top: 80%;
+    left: 0;
+    width: 20%;
+    height: 20%;
+  }
+  87.5% {
+    width: 20%;
+    height: 40%;
+  }
+  100% {
+    top: 0;
+    left: 0;
+    width: 20%;
+    height: 20%;
+  }
+}

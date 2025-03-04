@@ -1,0 +1,236 @@
+.x-tabs {
+  display: flex;
+  width: 100%;
+
+  --x-tabs-color: var(--x-color-primary);
+
+  &--vertical {
+    flex-direction: row;
+
+    .x-tabs__nav {
+      flex-direction: column;
+      border-right: 1px solid var(--x-border-color);
+    }
+
+    .x-tabs__nav-list {
+      flex-direction: column;
+    }
+
+    .x-tabs__indicator {
+      width: 2px;
+      height: 0;
+      right: 0;
+      top: 0;
+    }
+  }
+
+  &--horizontal {
+    flex-direction: column;
+
+    .x-tabs__nav {
+      flex-direction: row;
+      border-bottom: 1px solid var(--x-border-color);
+    }
+
+    .x-tabs__indicator {
+      height: 2px;
+      width: 0;
+      bottom: 0;
+      left: 0;
+    }
+  }
+
+  // 导航栏
+  &__nav {
+    position: relative;
+    display: flex;
+    background-color: var(--x-bg-color);
+  }
+
+  &__nav-wrap {
+    position: relative;
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+  }
+
+  &__nav-scroll {
+    position: relative;
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+    transition: transform 0.3s;
+  }
+
+  &__nav-list {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    z-index: 2;
+  }
+
+  &__nav-prev,
+  &__nav-next {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 100%;
+    cursor: pointer;
+    color: var(--x-text-color-secondary);
+    transition: color 0.3s;
+
+    &:hover {
+      color: var(--x-text-color);
+    }
+  }
+
+  // 标签项
+  &__nav-item {
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    height: 40px;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.3s;
+    white-space: nowrap;
+    color: var(--x-text-color-secondary);
+
+    &:hover {
+      color: var(--x-tabs-color);
+    }
+
+    &--active {
+      color: var(--x-tabs-color);
+    }
+
+    &--disabled {
+      cursor: not-allowed;
+      color: var(--x-text-color-disabled);
+    }
+
+    &-icon {
+      margin-right: 8px;
+      font-size: 16px;
+    }
+
+    &-close {
+      margin-left: 8px;
+      font-size: 16px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    &:hover &-close {
+      opacity: 1;
+    }
+  }
+
+  // 新增按钮
+  &__add {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 100%;
+    cursor: pointer;
+    color: var(--x-text-color-secondary);
+    transition: color 0.3s;
+
+    &:hover {
+      color: var(--x-tabs-color);
+    }
+  }
+
+  // 指示器
+  &__indicator {
+    position: absolute;
+    background-color: var(--x-tabs-color);
+    transition: all 0.3s;
+    pointer-events: none;
+  }
+
+  // 内容区域
+  &__content {
+    flex: 1;
+    padding: 16px;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  // 不同类型的样式
+  &--card {
+    .x-tabs__nav-item {
+      &--active {
+        background-color: var(--x-tabs-color);
+        border-color: var(--x-tabs-color);
+        color: #fff;
+      }
+    }
+
+    // 卡片类型不需要指示器
+    .x-tabs__indicator {
+      display: none;
+    }
+
+    &.x-tabs--horizontal {
+      .x-tabs__nav-item {
+        border-top: 1px solid var(--x-border-color);
+        border-right: 1px solid var(--x-border-color);
+
+        &:first-child {
+          border-left: 1px solid var(--x-border-color);
+
+          border-top-left-radius: var(--x-border-radius-base);
+        }
+
+        &:last-child {
+          border-top-right-radius: var(--x-border-radius-base);
+        }
+      }
+    }
+
+    &.x-tabs--vertical {
+      .x-tabs__nav-item {
+        border-bottom: 1px solid var(--x-border-color);
+        border-left: 1px solid var(--x-border-color);
+
+        &:first-child {
+          border-top: 1px solid var(--x-border-color);
+
+          border-top-left-radius: var(--x-border-radius-base);
+        }
+
+        &:last-child {
+          border-bottom-left-radius: var(--x-border-radius-base);
+        }
+      }
+    }
+  }
+
+  // 圆角类型
+  &--round {
+    .x-tabs__nav-item {
+      border-radius: var(--x-border-radius-base);
+    }
+
+    .x-tabs__nav-item--active {
+      color: #fff;
+    }
+
+    .x-tabs__indicator {
+      height: 100%;
+      border-radius: calc(1px * Infinity);
+      background-color: var(--x-tabs-color);
+      opacity: 1;
+    }
+
+    &.x-tabs--vertical {
+      .x-tabs__indicator {
+        width: 100%;
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+.x-checkbox-group {
+  display: inline-flex;
+  vertical-align: middle;
+  line-height: 1;
+  gap: var(--x-checkbox-group-gap);
+
+  --x-checkbox-group-gap: var(--x-gap-base);
+
+  &--vertical {
+    flex-direction: column;
+  }
+
+  &--horizontal {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  &--disabled {
+    cursor: not-allowed;
+  }
+}

@@ -1,0 +1,63 @@
+.x-message {
+  position: fixed;
+  padding: 4px 12px;
+  border-radius: var(--x-border-radius-base);
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.3s;
+  box-sizing: border-box;
+  box-shadow: var(--x-shadow-tiny);
+
+  &__icon {
+    margin-right: 8px;
+  }
+
+  &__content {
+    font-size: var(--x-font-size-base);
+    line-height: 1.5;
+  }
+
+  &__close {
+    margin-left: 12px !important;
+    font-size: 16px;
+    cursor: pointer;
+    color: inherit;
+    opacity: 0.6;
+    transition: opacity 0.3s;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  // 类型样式
+  &--info {
+    background-color: var(--x-color-info-100);
+    color: var(--x-color-info);
+    border: 1px solid var(--x-color-info-200);
+  }
+
+  &--success {
+    background-color: var(--x-color-success-100);
+    color: var(--x-color-success);
+    border: 1px solid var(--x-color-success-200);
+  }
+
+  &--warning {
+    background-color: var(--x-color-warning-100);
+    color: var(--x-color-warning);
+    border: 1px solid var(--x-color-warning-200);
+  }
+
+  &--error {
+    background-color: var(--x-color-error-100);
+    color: var(--x-color-error);
+    border: 1px solid var(--x-color-error-200);
+  }
+
+  &--default {
+    background-color: var(--x-bg-color);
+    color: var(--x-text-color);
+    border: 1px solid var(--x-border-color);
+  }
+}

@@ -1,0 +1,10 @@
+.x-modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: var(--x-bg-color-mask);
+  backdrop-filter: blur(10px);
+  z-index: var(--z-index);
+}

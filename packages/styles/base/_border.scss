@@ -1,0 +1,33 @@
+// 边框圆角
+$border-radius: (
+  "none": 0,
+  "base": 4px,
+  "large": 8px,
+  "round": 999px,
+  "circle": 50%
+);
+
+// 边框粗细
+$border-width: (
+  "thin": 1px,
+  "thick": 2px
+);
+
+:root {
+  // 默认颜色
+  --x-border-color: var(--x-border-color-default);
+
+  // 注入边框圆角变量
+  @each $name, $value in $border-radius {
+    --x-border-radius-#{$name}: #{$value};
+  }
+
+  // 注入边框粗细变量
+  @each $name, $value in $border-width {
+    --x-border-width-#{$name}: #{$value};
+  }
+
+  // 默认边框样式快捷方式
+  --x-border: var(--x-border-width-thin) solid var(--x-border-color);
+  --x-border-thick: var(--x-border-width-thick) solid var(--x-border-color);
+}

@@ -1,0 +1,14 @@
+// 间距
+$gap: (
+  "small": 6px,
+  "medium": 12px,
+  "large": 18px
+);
+
+:root {
+  @each $name, $value in $gap {
+    --x-gap-#{$name}: #{$value};
+  }
+
+  --x-gap-base: var(--x-gap-medium);
+}

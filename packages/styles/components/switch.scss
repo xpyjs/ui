@@ -1,0 +1,121 @@
+.x-switch {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  border: none;
+  outline: none;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+  gap: 8px;
+
+  --x-switch-icon-color: var(--x-color-black);
+  --x-switch-button-color: var(--x-color-white);
+  --x-switch-text-color: var(--x-text-color-secondary);
+  --x-switch-width: 40px;
+  --x-switch-height: 20px;
+  --x-switch-button-size: 16px;
+  --x-switch-button-margin: 2px;
+  --x-switch-font-size: 14px;
+
+  &__track {
+    position: relative;
+    width: var(--x-switch-width);
+    height: var(--x-switch-height);
+    border-radius: calc(var(--x-switch-height) / 2);
+    background-color: var(
+      --x-switch-inactive-color,
+      var(--x-color-neutral-300)
+    );
+    transition: all 0.3s;
+  }
+
+  &__button {
+    position: absolute;
+    top: var(--x-switch-button-margin);
+    left: var(--x-switch-button-margin);
+    width: var(--x-switch-button-size);
+    height: var(--x-switch-button-size);
+    border-radius: 50%;
+    background-color: var(--x-switch-button-color);
+    color: var(--x-switch-icon-color);
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .x-switch__icon {
+      font-size: calc(var(--x-switch-button-size) * 0.75);
+    }
+  }
+
+  &__text {
+    font-size: var(--x-switch-font-size);
+    color: var(--x-switch-text-color);
+    user-select: none;
+    white-space: nowrap;
+  }
+
+  // 选中状态
+  &--checked {
+    .x-switch__track {
+      background-color: var(--x-switch-active-color, var(--x-color-primary));
+    }
+
+    .x-switch__button {
+      left: calc(
+        var(--x-switch-width) - var(--x-switch-button-size) -
+          var(--x-switch-button-margin)
+      );
+
+      .x-switch__icon {
+        color: var(--x-color-primary);
+      }
+    }
+  }
+
+  // 禁用状态
+  &--disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  // 不同类型
+  &--primary .x-switch__track {
+    --x-switch-active-color: var(--x-color-primary);
+  }
+
+  &--success .x-switch__track {
+    --x-switch-active-color: var(--x-color-success);
+  }
+
+  &--warning .x-switch__track {
+    --x-switch-active-color: var(--x-color-warning);
+  }
+
+  &--error .x-switch__track {
+    --x-switch-active-color: var(--x-color-error);
+  }
+
+  // 不同尺寸
+  &--small {
+    --x-switch-width: 32px;
+    --x-switch-height: 16px;
+    --x-switch-button-size: 12px;
+    --x-switch-font-size: 12px;
+  }
+
+  &--medium {
+    --x-switch-width: 40px;
+    --x-switch-height: 20px;
+    --x-switch-button-size: 16px;
+    --x-switch-font-size: 14px;
+  }
+
+  &--large {
+    --x-switch-width: 48px;
+    --x-switch-height: 24px;
+    --x-switch-button-size: 20px;
+    --x-switch-font-size: 16px;
+  }
+}

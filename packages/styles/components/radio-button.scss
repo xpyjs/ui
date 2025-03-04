@@ -1,0 +1,93 @@
+.x-radio-button {
+  position: relative;
+  display: inline-flex;
+  margin: 0;
+  white-space: nowrap;
+  cursor: pointer;
+  flex: 1;
+
+  &__input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  &__inner {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 15px;
+    font-size: var(--x-radio-button-font-size);
+    line-height: var(--x-radio-button-height);
+    height: var(--x-radio-button-height);
+    border: var(--x-border);
+    border-left: 0;
+    background: var(--x-bg-color);
+    transition: all 0.3s;
+    flex: 1;
+  }
+
+  &:first-child &__inner {
+    border-left: var(--x-border);
+    border-radius: var(--x-border-radius-base) 0 0 var(--x-border-radius-base);
+  }
+
+  &:last-child &__inner {
+    border-radius: 0 var(--x-border-radius-base) var(--x-border-radius-base) 0;
+  }
+
+  // 选中状态
+  &--checked {
+    z-index: 1;
+
+    .x-radio-button__inner {
+      color: var(--x-color-white);
+      background: var(--x-radio-button-checked-color);
+      border-color: var(--x-radio-button-checked-color);
+    }
+  }
+
+  // 禁用状态
+  &--disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  // 尺寸
+  &--small {
+    --x-radio-button-height: 24px;
+    --x-radio-button-font-size: var(--x-font-size-small);
+  }
+
+  &--medium {
+    --x-radio-button-height: 32px;
+    --x-radio-button-font-size: var(--x-font-size-base);
+  }
+
+  &--large {
+    --x-radio-button-height: 40px;
+    --x-radio-button-font-size: var(--x-font-size-large);
+  }
+
+  // 类型
+  &--primary {
+    --x-radio-button-checked-color: var(--x-color-primary);
+  }
+
+  &--success {
+    --x-radio-button-checked-color: var(--x-color-success);
+  }
+
+  &--warning {
+    --x-radio-button-checked-color: var(--x-color-warning);
+  }
+
+  &--error {
+    --x-radio-button-checked-color: var(--x-color-error);
+  }
+
+  &--default {
+    --x-radio-button-checked-color: var(--x-color-primary);
+  }
+}

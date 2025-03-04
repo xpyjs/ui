@@ -1,0 +1,9 @@
+.x-collapse-group {
+  display: flex;
+  flex-direction: column;
+
+  &--horizontal {
+    flex-direction: row;
+    width: 100%;
+  }
+}

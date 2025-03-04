@@ -1,0 +1,17 @@
+.x-fixed {
+  position: fixed;
+  display: inline-flex;
+  background-color: var(--x-bg-color);
+  border-radius: var(--x-border-radius-base);
+  padding: var(--x-padding-base);
+
+  &__content {
+    position: relative;
+  }
+
+  &--dragging {
+    user-select: none;
+    opacity: 0.8;
+    cursor: move;
+  }
+}

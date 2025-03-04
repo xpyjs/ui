@@ -1,0 +1,53 @@
+.x-toast {
+  position: fixed;
+  padding: 12px 20px;
+  border-radius: var(--x-border-radius-base);
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.3s;
+  box-sizing: border-box;
+  background-color: var(--x-bg-color);
+  color: var(--x-text-color);
+  box-shadow: var(--x-shadow);
+  opacity: 0.8;
+
+  &__icon {
+    margin-right: 8px;
+  }
+
+  &__content {
+    font-size: var(--x-font-size-base);
+    line-height: 1.5;
+  }
+
+  // 反转样式
+  &--inverse {
+    background-color: var(--x-color-neutral-800);
+    color: var(--x-color-white);
+  }
+
+  // 类型样式
+  &--info {
+    .x-toast__icon {
+      color: var(--x-color-info) !important;
+    }
+  }
+
+  &--success {
+    .x-toast__icon {
+      color: var(--x-color-success) !important;
+    }
+  }
+
+  &--warning {
+    .x-toast__icon {
+      color: var(--x-color-warning) !important;
+    }
+  }
+
+  &--error {
+    .x-toast__icon {
+      color: var(--x-color-error) !important;
+    }
+  }
+}

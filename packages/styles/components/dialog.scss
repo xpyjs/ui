@@ -1,0 +1,43 @@
+.x-dialog {
+  background-color: var(--x-bg-color);
+  border-radius: var(--x-border-radius-base);
+  box-shadow: var(--x-shadow-large);
+  position: absolute;
+
+  --x-dialog-padding: 20px;
+
+  &.x-dialog--fullscreen {
+    width: 100vw !important;
+    height: 100vh !important;
+    position: fixed;
+    overflow: hidden;
+  }
+
+  &.x-dialog--center {
+    text-align: center;
+  }
+
+  &__header {
+    padding: var(--x-dialog-padding);
+    position: relative;
+
+    .x-dialog__title {
+      font-size: var(--x-font-size-large);
+      font-weight: 600;
+    }
+
+    .x-dialog__close {
+      position: absolute;
+      right: 0;
+      top: calc(var(--x-dialog-padding) / 2);
+    }
+  }
+
+  &__body {
+    overflow: hidden;
+  }
+
+  &__footer {
+    padding: var(--x-dialog-padding);
+  }
+}

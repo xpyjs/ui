@@ -1,0 +1,99 @@
+.x-popup {
+  position: fixed;
+  padding: 8px;
+  background-color: var(--x-bg-color);
+  border: var(--x-border);
+  border-radius: var(--x-border-radius-base);
+  box-shadow: var(--x-shadow);
+  box-sizing: border-box;
+
+  &__content {
+    position: relative;
+    z-index: 1;
+  }
+
+  &.x-popup__arrow {
+    &::before {
+      content: "";
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border: 1px solid var(--x-border-color);
+      background-color: inherit;
+      transform: rotate(45deg);
+      box-sizing: border-box;
+    }
+  }
+
+  &.x-popup--top.x-popup__arrow,
+  &.x-popup--top-start.x-popup__arrow,
+  &.x-popup--top-end.x-popup__arrow {
+    &::before {
+      bottom: -4px;
+      left: calc(50% - 4px);
+      border-left-width: 0;
+      border-top-width: 0;
+    }
+  }
+
+  &.x-popup--bottom.x-popup__arrow,
+  &.x-popup--bottom-start.x-popup__arrow,
+  &.x-popup--bottom-end.x-popup__arrow {
+    &::before {
+      top: -4px;
+      left: calc(50% - 4px);
+      border-right-width: 0;
+      border-bottom-width: 0;
+    }
+  }
+
+  &.x-popup--top-start.x-popup__arrow,
+  &.x-popup--bottom-start.x-popup__arrow {
+    &::before {
+      left: calc(15% - 4px) !important;
+    }
+  }
+
+  &.x-popup--top-end.x-popup__arrow,
+  &.x-popup--bottom-end.x-popup__arrow {
+    &::before {
+      left: calc(85% - 4px) !important;
+    }
+  }
+
+  &.x-popup--left.x-popup__arrow,
+  &.x-popup--left-start.x-popup__arrow,
+  &.x-popup--left-end.x-popup__arrow {
+    &::before {
+      top: calc(50% - 4px);
+      right: -4px;
+      border-left-width: 0;
+      border-bottom-width: 0;
+    }
+  }
+
+  &.x-popup--right.x-popup__arrow,
+  &.x-popup--right-start.x-popup__arrow,
+  &.x-popup--right-end.x-popup__arrow {
+    &::before {
+      top: calc(50% - 4px);
+      left: -4px;
+      border-right-width: 0;
+      border-top-width: 0;
+    }
+  }
+
+  &.x-popup--left-start.x-popup__arrow,
+  &.x-popup--right-start.x-popup__arrow {
+    &::before {
+      top: calc(20% - 4px) !important;
+    }
+  }
+
+  &.x-popup--left-end.x-popup__arrow,
+  &.x-popup--right-end.x-popup__arrow {
+    &::before {
+      top: calc(80% - 4px) !important;
+    }
+  }
+}

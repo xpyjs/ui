@@ -1,0 +1,179 @@
+// 颜色生成函数
+@use "sass:color";
+@use "sass:map";
+@use "sass:string";
+@use "../functions/transform" as *;
+@use "../vars.scss" as vars;
+
+// 从 vars 中获取色
+$base-colors: vars.$base-colors;
+$text-colors: vars.$text-colors;
+$border-colors: vars.$border-colors;
+$background-colors: vars.$background-colors;
+
+// 色阶配置（百分比）
+$color-mode-steps: (
+  "50": (
+    percent: 90%,
+    color: #ffffff
+  ),
+  "100": (
+    percent: 80%,
+    color: #ffffff
+  ),
+  "200": (
+    percent: 60%,
+    color: #ffffff
+  ),
+  "300": (
+    percent: 40%,
+    color: #ffffff
+  ),
+  "400": (
+    percent: 20%,
+    color: #ffffff
+  ),
+  "500": (
+    percent: 0%,
+    color: #ffffff
+  ),
+  "600": (
+    percent: 20%,
+    color: #000000
+  ),
+  "700": (
+    percent: 40%,
+    color: #000000
+  ),
+  "800": (
+    percent: 60%,
+    color: #000000
+  ),
+  "900": (
+    percent: 70%,
+    color: #000000
+  )
+);
+
+// 颜色取反函数
+@function invert-color($color) {
+  @if $color == #ffffff {
+    @return #000000;
+  } @else if $color == #000000 {
+    @return #ffffff;
+  } @else {
+    // 使用 color.complement 或计算反色
+    $red: 255 - red($color);
+    $green: 255 - green($color);
+    $blue: 255 - blue($color);
+    @return rgb($red, $green, $blue);
+  }
+}
+
+// 生成颜色变体
+@function generate-color-variants($color, $is-dark: false) {
+  $variants: ();
+
+  @each $step, $mode in $color-mode-steps {
+    $percentage: map.get($mode, "percent");
+    $mix-color: map.get($mode, "color");
+
+    // 在暗色模式下反转混合色
+    @if $is-dark {
+      $mix-color: invert-color($mix-color);
+    }
+
+    @if $percentage == 0 {
+      $variants: map.set($variants, $step, $color);
+    } @else {
+      $variants: map.set(
+        $variants,
+        $step,
+        mix($mix-color, $color, $percentage)
+      );
+    }
+  }
+
+  @return $variants;
+}
+
+// 生成颜色变量的 mixin
+@mixin generate-color-variables($is-dark: false) {
+  $mode: if($is-dark, "dark", "light");
+
+  @each $name, $colors in $background-colors {
+    --x-bg-color-#{$name}: #{map.get($colors, $mode)};
+  }
+  --x-bg-color: var(--x-bg-color-base);
+
+  // 生成基础色板
+  @each $name, $color in $base-colors {
+    $variants: generate-color-variants($color, $is-dark);
+
+    // 生成基础颜色（RGB格式）
+    --x-color-#{$name}: rgba(#{hex-to-rgb($color)});
+
+    @each $step, $variant in $variants {
+      --x-color-#{$name}-#{$step}: rgba(#{hex-to-rgb($variant)});
+    }
+  }
+
+  // 生成文本色板
+  @each $name, $color in $text-colors {
+    @if $is-dark {
+      --x-text-color-#{$name}: #{invert-color($color)};
+    } @else {
+      --x-text-color-#{$name}: #{$color};
+    }
+  }
+  // 添加基础别名
+  --x-text-color: var(--x-text-color-primary);
+
+  // 生成边框色板
+  @each $name, $color in $border-colors {
+    @if $is-dark {
+      --x-border-color-#{$name}: #{invert-color($color)};
+    } @else {
+      --x-border-color-#{$name}: #{$color};
+    }
+  }
+
+  // 添加一些基础固定颜色
+  --x-color-white: #ffffff;
+  --x-color-black: #000000;
+  --x-color-transparent: transparent;
+}
+
+// 生成CSS变量
+:root {
+  // 生成亮色模式变量
+  @include generate-color-variables(false);
+
+  // 暗色模式
+  &.dark {
+    @include generate-color-variables(true);
+  }
+}
+
+// 系统暗色模式适配
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    // 无手动切换时生效
+    @include generate-color-variables(true);
+  }
+}
+
+// 手动切换亮色模式（强制覆盖系统设置）
+[data-theme="light"] {
+  @include generate-color-variables(false);
+}
+
+// 使用 data-theme 属性切换暗色模式
+[data-theme="dark"] {
+  @include generate-color-variables(true);
+}
+
+:root {
+  // 透明度变量
+  --x-opacity-disabled: 0.5;
+}

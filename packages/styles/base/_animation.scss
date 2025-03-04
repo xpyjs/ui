@@ -1,0 +1,29 @@
+// 过渡动画
+:root {
+  --x-transition-duration: 0.3s;
+  --x-transition-duration-fast: 0.15s;
+  --x-transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+// 通用动画
+@keyframes x-ripple {
+  to {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+@keyframes x-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes x-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
