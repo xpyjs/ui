@@ -14,3 +14,4 @@ types
 
 *.log
 
+docs/.vitepress/cache
