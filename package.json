@@ -2,6 +2,10 @@
   "name": "@xpyjs/x-ui",
   "version": "0.0.1",
   "private": false,
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "description": "A Vue3 UI Library",
   "scripts": {
     "dev": "cd example && pnpm dev",
