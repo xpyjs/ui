@@ -29,6 +29,7 @@ export default defineConfig(
         name: "XUI",
         fileName: format => `index.js`
       },
+      cssCodeSplit: false, // 禁止CSS代码分割
       rollupOptions: {
         external: ["vue"],
         output: [

@@ -10,6 +10,7 @@ dist
 es
 lib
 types
+/styles/**
 !packages/types
 
 *.log

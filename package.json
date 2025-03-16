@@ -1,6 +1,6 @@
 {
   "name": "@xpyjs/x-ui",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "private": false,
   "publishConfig": {
     "access": "public",
@@ -13,7 +13,7 @@
     "build:types": "rimraf types && vue-tsc --declaration --emitDeclarationOnly --outDir types && tsc -d  && pnpm build:components && pnpm build:global && node scripts/build.type.mjs",
     "build:components": "node scripts/generate-components-dts.mjs && pnpm build:style",
     "build:global": "node scripts/generate-global-dts.mjs",
-    "build:style": "node scripts/generate-components-style.mjs",
+    "build:style": "node scripts/generate-components-style.mjs && sass packages/styles:styles --no-source-map",
     "test": "vitest",
     "test:ui": "vitest --ui",
     "test:run": "vitest run",
@@ -37,11 +37,12 @@
     "es",
     "lib",
     "types",
+    "styles",
     "packages/styles"
   ],
   "types": "types/index.d.ts",
   "main": "lib/packages/index.js",
-  "style": "es/index.css",
+  "style": "styles/index.css",
   "module": "es/packages/index.js",
   "exports": {
     ".": {
@@ -50,12 +51,12 @@
       "require": "./lib/packages/index.js"
     },
     "./index.css": {
-      "import": "./es/index.css",
-      "require": "./lib/index.css"
+      "import": "./styles/index.css",
+      "require": "./styles/index.css"
     },
     "./styles/index.css": {
-      "import": "./es/index.css",
-      "require": "./lib/index.css"
+      "import": "./styles/index.css",
+      "require": "./styles/index.css"
     },
     "./styles/index.scss": {
       "import": "./packages/styles/index.scss",
