@@ -33,7 +33,7 @@ $types: (
     }
   }
 
-  &__icon {
+  &.x-link__icon {
     display: inline-flex;
     align-items: center;
     margin-right: 4px;
@@ -45,7 +45,7 @@ $types: (
     $normal: nth($colors, 1);
     $hover: nth($colors, 2);
 
-    &--#{$type} {
+    &.x-link--#{$type} {
       color: #{$normal};
       &:hover {
         color: #{$hover};

@@ -26,6 +26,10 @@
 import { ref } from "vue";
 import { type TagProps, tagEmits } from "./props";
 
+defineOptions({
+  name: "XTag"
+});
+
 const props = withDefaults(defineProps<TagProps>(), {
   type: "default",
   size: "medium",

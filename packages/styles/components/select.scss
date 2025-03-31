@@ -107,154 +107,154 @@
       height: 48px;
     }
   }
-}
 
-.x-input {
-  position: relative;
-  display: inline-flex;
-  width: 100%;
-  font-size: var(--x-font-size-base);
-  line-height: 1.5;
-  --x-input-border: var(--x-border);
-
-  &__wrapper {
+  .x-input {
     position: relative;
-    display: flex;
-    flex: 1;
-    align-items: center;
-    padding: 0 12px;
-    box-sizing: border-box;
-    background-color: var(--x-bg-color);
-    border: var(--x-input-border);
-    border-radius: var(--x-border-radius-base);
-    transition: all var(--x-transition-duration) var(--x-transition-timing);
-
-    &:hover {
-      border-color: var(--x-color-primary-300);
-    }
-
-    &:focus-within {
-      border-color: var(--x-color-primary);
-      box-shadow: 0 0 0 2px var(--x-color-primary-100);
-    }
-  }
-
-  &__inner {
+    display: inline-flex;
     width: 100%;
-    height: 100%;
-    padding: 0;
-    color: var(--x-text-color);
-    font-size: inherit;
-    background: none;
-    border: none;
-    outline: none;
-    box-sizing: border-box;
+    font-size: var(--x-font-size-base);
+    line-height: 1.5;
+    --x-input-border: var(--x-border);
 
-    &::placeholder {
-      color: var(--x-color-neutral-300);
-    }
-
-    &:disabled {
-      cursor: not-allowed;
-      color: var(--x-color-neutral-100);
-    }
-  }
-
-  &__prefix,
-  &__suffix {
-    display: inline-flex;
-    align-items: center;
-    color: var(--x-color-neutral-300);
-
-    &:not(:empty) {
-      margin: 0 4px;
-    }
-  }
-
-  &__clear {
-    cursor: pointer;
-    color: var(--x-color-neutral-300);
-    transition: color var(--x-transition-duration-fast)
-      var(--x-transition-timing);
-
-    &:hover {
-      color: var(--x-color-neutral);
-    }
-  }
-
-  &__prepend,
-  &__append {
-    display: inline-flex;
-    align-items: center;
-    padding: 0 12px;
-    background-color: var(--x-bg-color);
-    border: var(--x-input-border);
-    box-sizing: border-box;
-    color: var(--x-color-neutral-600);
-  }
-
-  &__prepend {
-    border-right: none;
-    border-top-left-radius: var(--x-border-radius-base);
-    border-bottom-left-radius: var(--x-border-radius-base);
-  }
-
-  &__append {
-    border-left: none;
-    border-top-right-radius: var(--x-border-radius-base);
-    border-bottom-right-radius: var(--x-border-radius-base);
-  }
-
-  // 复合输入框时的圆角处理
-  &:has(.x-input__prepend) .x-input__wrapper {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-  }
-
-  &:has(.x-input__append) .x-input__wrapper {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-
-  // 状态
-  &--disabled {
-    cursor: not-allowed;
-    opacity: var(--x-opacity-disabled);
-
-    .x-input__wrapper {
+    &__wrapper {
+      position: relative;
+      display: flex;
+      flex: 1;
+      align-items: center;
+      padding: 0 12px;
+      box-sizing: border-box;
       background-color: var(--x-bg-color);
-      border-color: var(--x-border-color-light);
+      border: var(--x-input-border);
+      border-radius: var(--x-border-radius-base);
+      transition: all var(--x-transition-duration) var(--x-transition-timing);
 
       &:hover {
-        border-color: var(--x-border-color-light);
+        border-color: var(--x-color-primary-300);
+      }
+
+      &:focus-within {
+        border-color: var(--x-color-primary);
+        box-shadow: 0 0 0 2px var(--x-color-primary-100);
       }
     }
-  }
 
-  &--success .x-input__wrapper {
-    border-color: var(--x-color-success);
-    &:hover,
-    &:focus-within {
+    &__inner {
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      color: var(--x-text-color);
+      font-size: inherit;
+      background: none;
+      border: none;
+      outline: none;
+      box-sizing: border-box;
+
+      &::placeholder {
+        color: var(--x-color-neutral-300);
+      }
+
+      &:disabled {
+        cursor: not-allowed;
+        color: var(--x-color-neutral-100);
+      }
+    }
+
+    &__prefix,
+    &__suffix {
+      display: inline-flex;
+      align-items: center;
+      color: var(--x-color-neutral-300);
+
+      &:not(:empty) {
+        margin: 0 4px;
+      }
+    }
+
+    &__clear {
+      cursor: pointer;
+      color: var(--x-color-neutral-300);
+      transition: color var(--x-transition-duration-fast)
+        var(--x-transition-timing);
+
+      &:hover {
+        color: var(--x-color-neutral);
+      }
+    }
+
+    &__prepend,
+    &__append {
+      display: inline-flex;
+      align-items: center;
+      padding: 0 12px;
+      background-color: var(--x-bg-color);
+      border: var(--x-input-border);
+      box-sizing: border-box;
+      color: var(--x-color-neutral-600);
+    }
+
+    &__prepend {
+      border-right: none;
+      border-top-left-radius: var(--x-border-radius-base);
+      border-bottom-left-radius: var(--x-border-radius-base);
+    }
+
+    &__append {
+      border-left: none;
+      border-top-right-radius: var(--x-border-radius-base);
+      border-bottom-right-radius: var(--x-border-radius-base);
+    }
+
+    // 复合输入框时的圆角处理
+    &:has(.x-input__prepend) .x-input__wrapper {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    &:has(.x-input__append) .x-input__wrapper {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    // 状态
+    &--disabled {
+      cursor: not-allowed;
+      opacity: var(--x-opacity-disabled);
+
+      .x-input__wrapper {
+        background-color: var(--x-bg-color);
+        border-color: var(--x-border-color-light);
+
+        &:hover {
+          border-color: var(--x-border-color-light);
+        }
+      }
+    }
+
+    &--success .x-input__wrapper {
       border-color: var(--x-color-success);
-      box-shadow: 0 0 0 2px var(--x-color-success-100);
+      &:hover,
+      &:focus-within {
+        border-color: var(--x-color-success);
+        box-shadow: 0 0 0 2px var(--x-color-success-100);
+      }
     }
-  }
 
-  &--warning .x-input__wrapper {
-    border-color: var(--x-color-warning);
-    &:hover,
-    &:focus-within {
+    &--warning .x-input__wrapper {
       border-color: var(--x-color-warning);
-      box-shadow: 0 0 0 2px var(--x-color-warning-100);
+      &:hover,
+      &:focus-within {
+        border-color: var(--x-color-warning);
+        box-shadow: 0 0 0 2px var(--x-color-warning-100);
+      }
     }
-  }
 
-  &--error .x-input__wrapper {
-    border-color: var(--x-color-error);
-    &:hover,
-    &:focus-within {
+    &--error .x-input__wrapper {
       border-color: var(--x-color-error);
-      box-shadow: 0 0 0 2px var(--x-color-error-100);
+      &:hover,
+      &:focus-within {
+        border-color: var(--x-color-error);
+        box-shadow: 0 0 0 2px var(--x-color-error-100);
+      }
     }
   }
 }

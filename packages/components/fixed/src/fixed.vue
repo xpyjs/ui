@@ -34,6 +34,7 @@ defineOptions({
 
 const props = withDefaults(defineProps<FixedProps>(), {
   target: "body",
+  visible: true,
   position: () => ({
     right: "40px",
     bottom: "40px"

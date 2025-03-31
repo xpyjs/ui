@@ -156,12 +156,12 @@ $color-mode-steps: (
 }
 
 // 系统暗色模式适配
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme]) {
-    // 无手动切换时生效
-    @include generate-color-variables(true);
-  }
-}
+// @media (prefers-color-scheme: dark) {
+//   :root:not([data-theme]) {
+//     // 无手动切换时生效
+//     @include generate-color-variables(true);
+//   }
+// }
 
 // 手动切换亮色模式（强制覆盖系统设置）
 [data-theme="light"] {

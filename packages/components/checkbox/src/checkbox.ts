@@ -45,7 +45,7 @@ export type CheckboxEmits = typeof checkboxEmits;
 
 export type CheckboxSlots = SlotsType<{
   default?: Slot;
-  inner?: (props: {
+  box?: (props: {
     checked: boolean;
     indeterminate: boolean;
     disabled: boolean;
