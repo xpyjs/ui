@@ -41,7 +41,7 @@ jobs:
             ${{ runner.os }}-pnpm-store-
 
       - name: 6. 安装依赖
-        run: pnpm install && cd docs && pnpm install
+        run: pnpm install --no-frozen-lockfile && cd docs && pnpm install --no-frozen-lockfile
 
       - name: 7. 构建文档
         run: cd docs && pnpm docs:build && mv ./.vitepress/dist/ ../gh-pages/docs/
