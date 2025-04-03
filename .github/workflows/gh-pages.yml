@@ -40,13 +40,19 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
-      - name: 6. 安装依赖
-        run: cd docs && pnpm install --no-frozen-lockfile
+      - name: 6. 安装主目录依赖
+        run: pnpm install --prod --no-frozen-lockfile
 
-      - name: 7. 构建文档
+      - name: 7. 构建主库
+        run: pnpm build
+
+      - name: 8. 安装文档依赖
+        run: cd docs && pnpm install --prod --no-frozen-lockfile
+
+      - name: 9. 构建文档
         run: cd docs && pnpm docs:build && mv ./.vitepress/dist/ ../gh-pages/docs/
 
-      - name: 8. 保存并发布文档
+      - name: 10. 保存并发布文档
         uses: peaceiris/actions-gh-pages@v3
         if: ${{ github.ref == 'refs/heads/main' }}
         with:
