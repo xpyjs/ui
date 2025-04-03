@@ -53,11 +53,10 @@ jobs:
         run: cd docs && pnpm docs:build && mkdir -p ../gh-pages/docs/ && mv ./.vitepress/dist/ ../gh-pages/docs/
 
       - name: 10. 保存并发布文档
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         if: ${{ github.ref == 'refs/heads/main' }}
         with:
           publish_dir: ./gh-pages
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
           commit_message: Update docs
 
