@@ -1,4 +1,0 @@
-// 辅助函数：将 hex 转换为 rgb 字符串
-@function hex-to-rgb($hex-color) {
-    @return "#{red($hex-color)}, #{green($hex-color)}, #{blue($hex-color)}";
-  }
