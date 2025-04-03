@@ -21,17 +21,15 @@ outline: [2, 3]
 | --- | --- | --- | --- |
 | type | `ComponentType` | `'default'` | 标签类型 |
 | size | `ComponentSize` | `'medium'` | 标签大小 |
-| variant | `ComponentVariant` | `'light'` | 标签变体 |
-| shape | `ComponentShape` | `'default'` | 标签形状 |
+| variant | `'filled' \| 'outlined'` | `'filled'` | 标签变体 |
 | closable | `boolean` | `false` | 是否可关闭 |
-| disabled | `boolean` | `false` | 是否禁用 |
+| closeShowType | `'always' \| 'hover'` | `'always'` | 关闭按钮展示方式 |
 
 ### Slots
 
 | 名称 | 描述 | 参数 |
 | --- | --- | --- |
 | default | 默认插槽，用于显示标签内容 | - |
-| icon | 图标插槽，用于显示标签前置图标 | - |
 | close | 关闭图标插槽，可自定义关闭按钮 | - |
 
 ### Events
@@ -88,14 +86,6 @@ outline: [2, 3]
   </div>
 
   <div class="demo-row">
-    <div class="demo-desc">浅色样式(默认)</div>
-    <x-tag type="primary" variant="light">浅色标签</x-tag>
-    <x-tag type="success" variant="light">浅色标签</x-tag>
-    <x-tag type="warning" variant="light">浅色标签</x-tag>
-    <x-tag type="error" variant="light">浅色标签</x-tag>
-  </div>
-
-  <div class="demo-row">
     <div class="demo-desc">描边样式</div>
     <x-tag type="primary" variant="outlined">描边标签</x-tag>
     <x-tag type="success" variant="outlined">描边标签</x-tag>
@@ -114,20 +104,6 @@ outline: [2, 3]
   font-size: 14px;
 }
 </style>
-```
-
-:::
-
-### 不同形状
-
-:::demo
-
-```vue
-<template>
-  <x-tag shape="default" type="primary">默认形状</x-tag>
-  <x-tag shape="round" type="success">圆角标签</x-tag>
-  <x-tag shape="circle" type="warning">圆</x-tag>
-</template>
 ```
 
 :::
@@ -180,53 +156,25 @@ const addTag = () => {
 
 :::
 
-### 带图标的标签
+### 自定义关闭按钮
 
 :::demo
 
 ```vue
 <template>
-  <x-tag>
-    <template #icon>
-      <x-icon name="mdi:home" />
+  <x-tag closable close-show-type="always">
+    默认关闭图标
+    <template #close>
+      <x-icon name="ion:close-circle" />
     </template>
-    首页
   </x-tag>
 
-  <x-tag type="success">
-    <template #icon>
-      <x-icon name="mdi:check" />
+  <x-tag type="error" closable close-show-type="hover">
+    <template #close>
+      <x-icon name="ion:trash" />
     </template>
-    成功
+    自定义删除图标
   </x-tag>
-
-  <x-tag type="warning">
-    <template #icon>
-      <x-icon name="mdi:alert" />
-    </template>
-    警告
-  </x-tag>
-
-  <x-tag type="error">
-    <template #icon>
-      <x-icon name="mdi:close" />
-    </template>
-    错误
-  </x-tag>
-</template>
-```
-
-:::
-
-### 禁用状态
-
-:::demo
-
-```vue
-<template>
-  <x-tag disabled>禁用标签</x-tag>
-  <x-tag disabled type="primary">禁用标签</x-tag>
-  <x-tag disabled closable>禁用关闭</x-tag>
 </template>
 ```
 
@@ -247,10 +195,3 @@ export type ComponentType =
 
 // 组件尺寸
 export type ComponentSize = "small" | "medium" | "large";
-
-// 组件变体
-export type ComponentVariant = "filled" | "light" | "outlined" | "text";
-
-// 组件形状
-export type ComponentShape = "default" | "round" | "circle" | "square";
-```

@@ -2,13 +2,6 @@
 outline: [2, 3]
 ---
 
-<style>
-  .x-icon {
-    margin-right: var(--x-gap-medium);
-    margin-bottom: var(--x-gap-medium);
-  }
-</style>
-
 # Icon 图标
 
 提供各种图标显示的组件，支持 iconify 图标库和自定义 SVG 内容。
@@ -38,10 +31,19 @@ Icon 组件默认支持 [Iconify](https://iconify.design/) 图标库，这是一
 
 ```vue
 <template>
-  <x-icon name="icon-park-outline:handle-a" />
-  <x-icon name="icon-park-outline:handle-b" />
-  <x-icon name="icon-park-outline:handle-c" />
+  <div class="container">
+    <x-icon name="icon-park-outline:handle-a" />
+    <x-icon name="icon-park-outline:handle-b" />
+    <x-icon name="icon-park-outline:handle-c" />
+  </div>
 </template>
+
+<style scoped>
+.container {
+  display: flex;
+  gap: 16px;
+}
+</style>
 ```
 
 :::
@@ -52,9 +54,11 @@ Icon 组件默认支持 [Iconify](https://iconify.design/) 图标库，这是一
 
 ```vue
 <template>
-  <x-icon :name="`url:${addIcon2}`" size="16" />
-  <x-icon :content="addIcon" size="40" />
-  <x-icon :content="localIcon" size="20" />
+  <div class="container">
+    <x-icon :name="`url:${addIcon2}`" size="16" />
+    <x-icon :content="addIcon" size="40" />
+    <x-icon :content="localIcon" size="20" />
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -63,6 +67,14 @@ import addIcon2 from "./icons/add.svg";
 
 const localIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"></path></svg>`;
 </script>
+
+<style scoped>
+.container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+</style>
 ```
 
 :::
@@ -73,10 +85,19 @@ const localIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16
 
 ```vue
 <template>
-  <x-icon name="icon-park-outline:handle-a" color="#f00" />
-  <x-icon name="icon-park-outline:handle-b" color="#0f0" />
-  <x-icon name="icon-park-outline:handle-c" color="#00f" />
+  <div class="container">
+    <x-icon name="icon-park-outline:handle-a" color="#f00" />
+    <x-icon name="icon-park-outline:handle-b" color="#0f0" />
+    <x-icon name="icon-park-outline:handle-c" color="#00f" />
+  </div>
 </template>
+
+<style scoped>
+.container {
+  display: flex;
+  gap: 16px;
+}
+</style>
 ```
 
 :::
@@ -87,17 +108,26 @@ const localIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16
 
 ```vue
 <template>
-  <x-icon name="icon-park-outline:handle-a" color="#f00" size="24" />
-  <x-icon name="icon-park-outline:handle-b" color="#0f0" size="32" />
-  <x-icon name="icon-park-outline:handle-c" color="#00f" size="40" />
-  <x-icon :content="localIcon" size="24px" />
-  <x-icon :content="localIcon" size="1em" />
-  <x-icon :content="localIcon" size="4rem" />
+  <div class="container" style="align-items: center;">
+    <x-icon name="icon-park-outline:handle-a" color="#f00" size="24" />
+    <x-icon name="icon-park-outline:handle-b" color="#0f0" size="32" />
+    <x-icon name="icon-park-outline:handle-c" color="#00f" size="40" />
+    <x-icon :content="localIcon" size="24px" />
+    <x-icon :content="localIcon" size="1em" />
+    <x-icon :content="localIcon" size="4rem" />
+  </div>
 </template>
 
 <script setup lang="ts">
 const localIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"></path></svg>`;
 </script>
+
+<style scoped>
+.container {
+  display: flex;
+  gap: 16px;
+}
+</style>
 ```
 
 :::
