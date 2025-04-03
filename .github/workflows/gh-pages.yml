@@ -21,14 +21,14 @@ jobs:
           node-version: 18
 
       - name: 3. 安装依赖
-        run: pnpm install --filter="./docs"
+        run: cd docs && yarn
 
       - name: 4. 构建文档
-        run: cd docs && pnpm docs:build && mv ./.vitepress/dist/ ../gh-pages/docs/
+        run: cd docs && yarn docs:build && mv ./.vitepress/dist/ ../gh-pages/docs/
 
       - name: 5. 保存并发布文档
         uses: peaceiris/actions-gh-pages@v3
-        if: ${{ github.ref == 'refs/heads/master' }}
+        if: ${{ github.ref == 'refs/heads/main' }}
         with:
           publish_dir: ./gh-pages
           github_token: ${{ secrets.GITHUB_TOKEN }}
