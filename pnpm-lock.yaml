@@ -60,7 +60,7 @@ importers:
   docs:
     devDependencies:
       '@xpyjs/x-ui':
-        specifier: ^0.0.3
+        specifier: ^0.0.5
         version: link:..
       vitepress:
         specifier: 1.2.3

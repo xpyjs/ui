@@ -1,6 +1,6 @@
 {
   "name": "@xpyjs/x-ui",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "private": false,
   "publishConfig": {
     "access": "public",
@@ -74,7 +74,6 @@
     "@vitejs/plugin-vue": "^5.2.1",
     "@vitest/coverage-v8": "^2.1.8",
     "@vue/test-utils": "^2.4.6",
-    "@xpyjs/x-ui": "0.0.4",
     "jsdom": "^26.0.0",
     "rimraf": "^6.0.1",
     "sass": "^1.83.1",

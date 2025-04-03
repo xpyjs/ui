@@ -5,7 +5,7 @@ import { demoblockPlugin, demoblockVitePlugin } from 'vitepress-theme-demoblock'
 export default defineConfig({
   lang: 'zh-CN',
   title: "X-UI",
-  base: '/ui/docs/',
+  base: '/ui/',
   description: "X-UI 文档站",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config

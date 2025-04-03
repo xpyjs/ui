@@ -1,13 +1,15 @@
 name: 部署文档和 Demo
 on:
   push:
-    branches: [master]
+    branches: [main]
     paths:
       - 'docs/**'
       - '.github/workflows/gh-pages.yml'
 
 jobs:
   create-gh-pages:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
@@ -20,17 +22,44 @@ jobs:
         with:
           node-version: 18
 
-      - name: 3. 安装依赖
-        run: pnpm install --filter="./docs"
-
-      - name: 4. 构建文档
-        run: cd docs && pnpm docs:build && mv ./.vitepress/dist/ ../gh-pages/docs/
-
-      - name: 5. 保存并发布文档
-        uses: peaceiris/actions-gh-pages@v3
-        if: ${{ github.ref == 'refs/heads/master' }}
+      - name: 3. 安装 pnpm
+        uses: pnpm/action-setup@v2
         with:
-          publish_dir: ./gh-pages
+          version: 8  # 或者你想要使用的 pnpm 版本
+          run_install: false
+
+      - name: 4. 获取 pnpm 缓存目录
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_ENV
+
+      - name: 5. 缓存 pnpm 依赖
+        uses: actions/cache@v3
+        id: pnpm-cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: 6. 安装主目录依赖
+        run: pnpm install --no-frozen-lockfile
+
+      - name: 7. 构建主库
+        run: pnpm build
+
+      - name: 8. 安装文档依赖
+        run: cd docs && pnpm install --no-frozen-lockfile
+
+      - name: 9. 构建文档
+        run: cd docs && pnpm docs:build && mkdir -p ../gh-pages/ && mv ./.vitepress/dist/ ../gh-pages/
+
+      - name: 10. 保存并发布文档
+        uses: peaceiris/actions-gh-pages@v4
+        if: ${{ github.ref == 'refs/heads/main' }}
+        with:
+          publish_dir: ./gh-pages/dist
           github_token: ${{ secrets.GITHUB_TOKEN }}
           deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
           commit_message: Update docs
+
