@@ -20,13 +20,33 @@ jobs:
         with:
           node-version: 18
 
-      - name: 3. 安装依赖
-        run: yarn && cd docs && yarn
+      - name: 3. 安装 pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8  # 或者你想要使用的 pnpm 版本
+          run_install: false
 
-      - name: 4. 构建文档
-        run: cd docs && yarn docs:build && mv ./.vitepress/dist/ ../gh-pages/docs/
+      - name: 4. 获取 pnpm 缓存目录
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_ENV
 
-      - name: 5. 保存并发布文档
+      - name: 5. 缓存 pnpm 依赖
+        uses: actions/cache@v3
+        id: pnpm-cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: 6. 安装依赖
+        run: pnpm install && cd docs && pnpm install
+
+      - name: 7. 构建文档
+        run: cd docs && pnpm docs:build && mv ./.vitepress/dist/ ../gh-pages/docs/
+
+      - name: 8. 保存并发布文档
         uses: peaceiris/actions-gh-pages@v3
         if: ${{ github.ref == 'refs/heads/main' }}
         with:
