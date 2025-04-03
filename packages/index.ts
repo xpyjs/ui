@@ -147,7 +147,7 @@ export default {
     });
 
     app.config.globalProperties.$XUI = {
-      version: "0.0.3"
+      version: "0.0.4"
     };
   }
 };
