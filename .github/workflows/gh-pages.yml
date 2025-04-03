@@ -50,7 +50,7 @@ jobs:
         run: cd docs && pnpm install --no-frozen-lockfile
 
       - name: 9. 构建文档
-        run: cd docs && pnpm docs:build && mv ./.vitepress/dist/ ../gh-pages/docs/
+        run: cd docs && pnpm docs:build && mkdir -p ../gh-pages/docs/ && mv ./.vitepress/dist/ ../gh-pages/docs/
 
       - name: 10. 保存并发布文档
         uses: peaceiris/actions-gh-pages@v3
