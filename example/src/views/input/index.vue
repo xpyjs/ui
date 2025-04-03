@@ -50,8 +50,8 @@
         <template #prepend>
           <x-select
             v-model="protocol"
-            style="width: 100px; border: none"
-            :options="options"
+            class="protocol-selector"
+            :items="items"
           />
         </template>
         <template #append>.com</template>
@@ -86,7 +86,7 @@ const input6 = ref("");
 const input7 = ref("");
 const input8 = ref("");
 const protocol = ref("http");
-const options = [
+const items = [
   { label: "Http://", value: "http" },
   { label: "Https://", value: "https" }
 ];
@@ -97,6 +97,16 @@ const options = [
   .x-input {
     width: 300px;
     margin-right: 16px;
+  }
+}
+
+.protocol-selector {
+  width: 100px;
+  border: none;
+
+  :deep(.x-input__wrapper) {
+    border: none;
+    height: 100%;
   }
 }
 </style>
